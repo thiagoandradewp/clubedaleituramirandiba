@@ -1,147 +1,466 @@
-/* Configurações Globais */
+/* ==========================================================================
+   VARIÁVEIS DE DESIGN & RESET
+   ========================================================================== */
+:root {
+    --primary: #0f172a;       /* Azul Escuro Profundo */
+    --primary-light: #1e293b;
+    --accent: #d97706;        /* Âmbar / Dourado */
+    --accent-hover: #b45309;
+    --whatsapp: #25d366;
+    --whatsapp-hover: #1ebc57;
+    --bg-main: #f8fafc;
+    --bg-card: #ffffff;
+    --text-dark: #0f172a;
+    --text-muted: #64748b;
+    --text-light: #f8fafc;
+    --border-color: #e2e8f0;
+    --font-heading: 'Merriweather', serif;
+    --font-body: 'Plus Jakarta Sans', sans-serif;
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.04);
+    --shadow-md: 0 10px 25px -5px rgba(0,0,0,0.08);
+    --shadow-lg: 0 20px 30px -10px rgba(0,0,0,0.15);
+    --radius: 16px;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    background-color: #f4f7f6;
-    color: #333;
+    font-family: var(--font-body);
+    background-color: var(--bg-main);
+    color: var(--text-dark);
     line-height: 1.6;
 }
 
-/* Cabeçalho */
-header {
-    background: linear-gradient(135deg, #1e3c72, #2a5298);
-    color: white;
+/* ==========================================================================
+   NAVBAR
+   ========================================================================== */
+.navbar {
+    background-color: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(8px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding: 15px 0;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--text-light);
+    font-weight: 700;
+    font-size: 1.25rem;
+}
+
+.logo i {
+    color: var(--accent);
+    font-size: 1.4rem;
+}
+
+.escola-badge {
+    background: rgba(255, 255, 255, 0.1);
+    color: #cbd5e1;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   HERO SECTION
+   ========================================================================== */
+.hero {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    position: relative;
+    padding: 90px 24px;
+    color: var(--text-light);
     text-align: center;
-    padding: 50px 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
 }
 
-.header-container h1 {
-    font-size: 2.8rem;
-    margin-bottom: 5px;
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: radial-gradient(rgba(217, 119, 6, 0.15) 1px, transparent 1px);
+    background-size: 30px 30px;
+    opacity: 0.5;
 }
 
-.header-container h2 {
-    font-size: 1.3rem;
-    font-weight: 300;
-    color: #e0e0e0;
-    margin-bottom: 15px;
+.hero-content {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    z-index: 1;
 }
 
-.header-container p {
-    font-size: 1.1rem;
-    max-width: 600px;
-    margin: 0 auto 25px auto;
+.tagline {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(217, 119, 6, 0.15);
+    color: #fef3c7;
+    border: 1px solid rgba(217, 119, 6, 0.3);
+    padding: 8px 18px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 24px;
+}
+
+.hero h1 {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.hero p {
+    font-size: 1.15rem;
+    color: #94a3b8;
+    margin-bottom: 36px;
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Botão WhatsApp */
 .btn-whatsapp {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    background-color: #25d366;
+    gap: 12px;
+    background-color: var(--whatsapp);
     color: white;
     text-decoration: none;
+    font-weight: 700;
     font-size: 1.1rem;
-    font-weight: bold;
-    padding: 12px 25px;
-    border-radius: 30px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+    padding: 16px 36px;
+    border-radius: 50px;
+    box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-whatsapp:hover {
-    background-color: #1ebc57;
-    transform: translateY(-2px);
+    background-color: var(--whatsapp-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 25px rgba(37, 211, 102, 0.4);
 }
 
-/* Conteúdo Principal */
-.container {
+.btn-whatsapp i {
+    font-size: 1.4rem;
+}
+
+/* ==========================================================================
+   CONTEÚDO PRINCIPAL & SEÇÕES
+   ========================================================================== */
+.main-container {
     max-width: 1200px;
-    margin: 40px auto;
-    padding: 0 20px;
+    margin: 0 auto;
+    padding: 60px 24px;
 }
 
-.intro {
-    text-align: center;
+.section-title {
     margin-bottom: 40px;
 }
 
-.intro h3 {
-    font-size: 1.8rem;
-    color: #1e3c72;
-    margin-bottom: 10px;
+.section-title h2 {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
-/* Grid de Livros */
-.livros-grid {
+.section-title h2 i {
+    color: var(--accent);
+}
+
+.section-title p {
+    color: var(--text-muted);
+    font-size: 1rem;
+    margin-top: 6px;
+}
+
+/* ==========================================================================
+   CARD LIVRO EM DESTAQUE
+   ========================================================================== */
+.destaque-section {
+    margin-bottom: 70px;
+}
+
+.destaque-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    border-radius: var(--radius);
+    padding: 40px;
+    color: white;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
+    grid-template-columns: 220px 1fr;
+    gap: 40px;
+    align-items: center;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Cards de Livros */
-.card-livro {
-    background-color: white;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+.destaque-capa {
+    aspect-ratio: 2/3;
+    background: linear-gradient(135deg, #d97706, #78350f);
+    border-radius: 12px;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    padding: 24px;
+    box-shadow: 0 15px 25px rgba(0,0,0,0.5);
+    position: relative;
+    overflow: hidden;
 }
 
-.card-livro:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+.destaque-capa::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; bottom: 0; width: 12px;
+    background: rgba(0, 0, 0, 0.25);
 }
 
-.badge-mes {
-    background-color: #1e3c72;
-    color: white;
-    padding: 8px;
-    text-align: center;
-    font-weight: bold;
-    font-size: 0.9rem;
+.destaque-capa .capa-mes {
+    background: rgba(0,0,0,0.4);
+    color: #fef3c7;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    align-self: flex-start;
     text-transform: uppercase;
 }
 
-.card-conteudo {
+.destaque-capa .capa-titulo {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    color: white;
+    line-height: 1.3;
+}
+
+.destaque-info .status-badge {
+    background: #22c55e;
+    color: white;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 16px;
+}
+
+.destaque-info h3 {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    margin-bottom: 8px;
+}
+
+.destaque-info .autor {
+    color: #cbd5e1;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.destaque-info .sinopse {
+    color: #94a3b8;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 28px;
+}
+
+/* ==========================================================================
+   GRID DE LIVROS (12 MESES)
+   ========================================================================== */
+.livros-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 30px;
+}
+
+.card-livro {
+    background-color: var(--bg-card);
+    border-radius: var(--radius);
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--shadow-sm);
+}
+
+.card-livro:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-md);
+    border-color: rgba(217, 119, 6, 0.4);
+}
+
+/* Visual da Capa do Livro em CSS */
+.book-cover {
+    height: 180px;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    color: white;
+}
+
+.book-cover::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; bottom: 0; width: 8px;
+    background: rgba(0,0,0,0.2);
+}
+
+.month-tag {
+    align-self: flex-start;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(4px);
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.cover-title {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.3;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.card-body {
+    padding: 24px;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
 }
 
-.card-conteudo h4 {
-    font-size: 1.2rem;
-    color: #2a5298;
-    margin-bottom: 5px;
-}
-
-.card-conteudo .autor {
-    font-style: italic;
-    color: #666;
-    margin-bottom: 15px;
-    font-size: 0.95rem;
-}
-
-.card-conteudo .descricao {
+.card-body .autor {
+    color: var(--accent);
+    font-weight: 600;
     font-size: 0.9rem;
-    color: #555;
+    margin-bottom: 12px;
+}
+
+.card-body .descricao {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    line-height: 1.6;
     flex-grow: 1;
 }
 
-/* Rodapé */
-footer {
+/* Paletas de Cores Alternadas para as Capas */
+.cover-theme-1  { background: linear-gradient(135deg, #1e3c72, #2a5298); }
+.cover-theme-2  { background: linear-gradient(135deg, #0d9488, #115e59); }
+.cover-theme-3  { background: linear-gradient(135deg, #b91c1c, #7f1d1d); }
+.cover-theme-4  { background: linear-gradient(135deg, #4338ca, #312e81); }
+.cover-theme-5  { background: linear-gradient(135deg, #c05621, #7b341e); }
+.cover-theme-6  { background: linear-gradient(135deg, #4a5568, #2d3748); }
+
+/* ==========================================================================
+   INFO SECTION & FOOTER
+   ========================================================================== */
+.info-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-top: 80px;
+}
+
+.info-card {
+    background: white;
+    padding: 32px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border-color);
     text-align: center;
-    padding: 20px;
-    background-color: #1e3c72;
+}
+
+.info-card i {
+    font-size: 2.2rem;
+    color: var(--accent);
+    margin-bottom: 16px;
+}
+
+.info-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: var(--primary);
+}
+
+.info-card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+footer {
+    background-color: var(--primary);
     color: white;
-    margin-top: 50px;
+    padding: 60px 24px 30px 24px;
+    margin-top: 80px;
+    border-top: 1px solid var(--primary-light);
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.footer-brand h3 {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+    color: var(--text-light);
+}
+
+.footer-brand p {
+    color: #94a3b8;
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+}
+
+.copyright {
+    color: #64748b;
+    font-size: 0.85rem;
+    border-top: 1px solid var(--primary-light);
+    padding-top: 24px;
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE
+   ========================================================================== */
+@media (max-width: 768px) {
+    .hero h1 { font-size: 2.1rem; }
+    .destaque-card {
+        grid-template-columns: 1fr;
+        padding: 24px;
+        gap: 24px;
+    }
+    .destaque-capa {
+        height: 200px;
+        aspect-ratio: auto;
+    }
+    .destaque-info h3 { font-size: 1.6rem; }
+    .escola-badge { display: none; }
 }
